@@ -1,0 +1,49 @@
+package graphs;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+
+public class HasNodeUndirected {
+
+	public static void main(String[] args) {
+		Map<String, String[]> graph = new HashMap();
+		graph.put("a", new String[]{"b","c"});
+		graph.put("b", new String[]{"d"});
+		graph.put("d", new String[]{"b,f"});
+		graph.put("c", new String[]{"a,e"});
+		graph.put("e", new String[] {});
+		graph.put("f", new new String[] {});
+		
+		Set<String> set = new HashSet<String>();
+		
+		
+		System.out.println(hasNodeRec(graph, "c", "f", set));
+	}
+	
+	public static boolean hasNodeRec(Map<String, String[]> graph, String source, String dest, Set<String> set) {
+		
+		if(set.contains(source)) return false;
+		if(source.equals(dest)) return true;
+		set.add(source);
+		for(String node : graph.get(source)) {
+			System.out.println(node);
+			if(hasNodeRec(graph, node, dest, set)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+
+
+}

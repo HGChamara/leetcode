@@ -1,0 +1,40 @@
+package leetcode.binarytrees;
+
+public class InvertBinaryTree {
+	
+	public static void main(String[] args) {
+		
+		TreeNode node = new TreeNode(4);
+		node.left = new TreeNode(2);
+		node.right = new TreeNode(7);
+		node.left.left = new TreeNode(1);
+		node.left.right = new TreeNode(3);
+		node.right.left = new TreeNode(6);
+		node.right.right = new TreeNode(9);
+		
+		
+		invertTree(null);
+	}
+	
+	
+	public static TreeNode invertTree(TreeNode node) {
+		
+		while(!(node.left == null && node.right == null)) {
+			invertTree(node.left);
+			invertTree(node.left);
+			
+			TreeNode tnl = node.left;
+			TreeNode tnr = node.right;
+			
+			node.left = tnr;
+			node.right = tnl;
+			
+		}
+		
+		
+		
+		
+		return node;
+	}
+
+}

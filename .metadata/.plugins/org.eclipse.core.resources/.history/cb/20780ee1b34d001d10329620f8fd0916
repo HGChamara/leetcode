@@ -1,0 +1,22 @@
+package leetcode.binarytrees;
+
+public class ValidBst {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public boolean isValidBST(TreeNode root) {
+        if((root.right == null) || (root.left) == null) return true;
+        
+        if((root.left != null) && (root.val>root.left.val)) return true;
+        if((root.right != null) && (root.val<root.right.val)) return true;
+        
+        isValidBST(root.left);
+        isValidBST(root.right);
+        
+        return false;
+        
+    }
+
+}

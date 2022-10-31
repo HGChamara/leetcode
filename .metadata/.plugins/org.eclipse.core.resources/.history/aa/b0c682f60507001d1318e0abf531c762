@@ -1,0 +1,64 @@
+package graphs;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Stack;
+
+public class GraphTraversal {
+
+	public static void main(String[] args) {
+
+		Map<String, List<String>> graph = new HashMap();
+		graph.put("a", Arrays.asList("b","c"));
+		graph.put("b", Arrays.asList("d"));
+		graph.put("d", Arrays.asList("f"));
+		graph.put("c", Arrays.asList("e"));
+		graph.put("e", new ArrayList<String>());
+		graph.put("f", new ArrayList<String>());
+		depthFirstRec(graph, "a");
+	}
+	
+	public static void depthFirst(Map<String, List<String>> graph, String node) {
+		
+		Stack<String> stack = new Stack<String>();
+		stack.push(node);
+		
+		while(!stack.isEmpty()) {
+			String curr = stack.pop();
+			System.out.println(curr);
+			
+			for(String a : graph.get(curr)) {
+				stack.push(a);
+			}
+		}	
+	}
+	
+	public static void depthFirstRec(Map<String, List<String>> graph, String node) {
+		System.out.println(node);
+		for(String a : graph.get(node)) {
+			depthFirstRec(graph, a);
+		}
+			
+	}
+	
+public static void breathFirst(Map<String, List<String>> graph, String node) {
+		
+		Queue<String> queue = new LinkedList<String>();
+		queue.add(node);
+		
+		while(!queue.isEmpty()) {
+			String curr = queue.poll();
+			System.out.println(curr);
+			
+			for(String a : graph.get(curr)) {
+				queue.add(a);
+			}
+		}	
+	}
+
+}

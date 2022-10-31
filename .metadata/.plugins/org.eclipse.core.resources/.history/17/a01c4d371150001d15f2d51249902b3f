@@ -1,0 +1,36 @@
+package leetcode.binarytrees;
+
+public class MaximumPathSum {
+
+	public static int result = 0;
+	public static void main(String[] args) {
+		TreeNode root = new TreeNode(2);
+		root.left = new TreeNode(1);
+		root.right = new TreeNode(3);
+		System.out.println(maxPathSum(root));
+
+	}
+	
+	public int maxPathSum(TreeNode root) {
+		result = root.val;
+        int result = root.val;
+        return result;
+        
+    }
+	
+	public int dfs(TreeNode root) {
+		if(root == null) return 0;
+		
+		int leftMax = dfs(root.left);
+		int rightMax = dfs(root.right);
+		leftMax = Math.max(leftMax, 0);
+		rightMax = Math.max(rightMax, 0);
+		
+		result = Math.max(result, root.val+leftMax+rightMax);
+		
+		return root.val+ Math.max(leftMax, rightMax);
+		
+		
+	}
+
+}

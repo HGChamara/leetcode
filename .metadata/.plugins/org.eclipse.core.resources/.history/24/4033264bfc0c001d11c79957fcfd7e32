@@ -1,0 +1,52 @@
+package leetcode.binarytrees;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class Diameter {
+	
+	private int = 0;
+
+	public static void main(String[] args) {
+
+		TreeNode node = new TreeNode(4);
+		node.left = new TreeNode(2);
+		node.right = new TreeNode(7);
+		node.left.left = new TreeNode(1);
+		node.left.right = new TreeNode(3);
+		node.right.left = new TreeNode(6);
+		node.right.right = new TreeNode(9);
+		
+		System.out.println("result "+diameterOfBinaryTree(node));
+
+
+	}
+
+	public static int diameterOfBinaryTree(TreeNode node) {
+
+		int[] a = {0};
+		getDiameter(node,a);
+		return a[0];
+		
+
+	}
+	
+	public static int getDiameter(TreeNode node, int[] a) {
+
+		if (node == null)
+			return -1;
+		
+		int lr = getDiameter(node.left,a);
+		int rt = getDiameter(node.right,a);
+		
+		a[0] = Math.max(a[0], (2+lr+rt));
+		
+		return 1 + Math.max(lr, rt);
+		
+
+	}
+		
+		
+
+}

@@ -1,0 +1,29 @@
+package leetcode.arrays;
+
+import java.util.HashMap;
+
+public class ContainsDuplicate {
+
+	public static void main(String[] args) {
+		// TODO -generated method stub
+		int[] nums = {1,8,3,4};
+		System.out.println(containsDuplicate(nums));
+
+	}
+	
+	public static boolean containsDuplicate(int[] nums) {
+		HashMap<Integer, Integer> numMap = new HashMap<Integer, Integer>();
+		for(int num : nums) {
+			if(numMap.get(num) != null) {
+				return true;
+			}
+			else 
+			{
+				numMap.put(num, 1);
+			}
+			
+		}
+		return false;
+	}
+
+}

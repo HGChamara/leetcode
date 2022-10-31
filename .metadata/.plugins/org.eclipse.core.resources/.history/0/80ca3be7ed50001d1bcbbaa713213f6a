@@ -1,0 +1,58 @@
+package leetcode.binarytrees;
+
+import java.util.ArrayList;
+
+public class SerializeDeserialize {
+
+	public static ArrayList<String> res = new ArrayList<String>();
+	
+	public static void main(String[] args) {
+		TreeNode node = new TreeNode(3);
+		node.left = new TreeNode(9);
+		node.right = new TreeNode(20);
+		node.left.left = new TreeNode(1);
+		node.left.right = new TreeNode(3);
+		node.right.left = new TreeNode(15);
+		node.right.right = new TreeNode(7);
+		
+		SerializeDeserialize s = new SerializeDeserialize();
+		System.out.println(s.serialize(node));
+		s.deserialize("1,2,3,N,N,4,5");
+
+	}
+	
+	// Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        
+    	if (root == null) {
+    		res.add("N");
+    		return res.toString();
+    	}
+    	
+    	res.add(root.val+"");
+    	serialize(root.left);
+    	serialize(root.right);
+    	return res.toString();
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+    	data = data.substring(1, data.length()-1);
+    	TreeNode t = new TreeNode();
+    	dfs(0, t, data.split(","));
+        return t;
+    }
+    
+    public void dfs(int i, TreeNode node, String[] arr) {
+    	if(arr[i].equals("N")) {
+    		i++;
+    		return;
+    	}
+    	System.out.println(arr[i]);
+    	node = new TreeNode(Integer.valueOf(arr[i]))  ;
+    	i++;
+    	dfs(i, node.left, arr);
+    	dfs(i, node.right, arr);
+    }
+
+}

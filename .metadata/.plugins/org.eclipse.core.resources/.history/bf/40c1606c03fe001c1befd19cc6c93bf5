@@ -1,0 +1,53 @@
+package binarytrees;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class TreeIncludes {
+
+	public static void main(String[] args) {
+		Node a = new Node("a");
+		Node b = new Node("b");
+		Node c = new Node("c");
+		Node d = new Node("d");
+		Node e = new Node("e");
+		Node f = new Node("f");
+		
+		a.leftNode = b;
+		a.rightNode = c;
+		b.leftNode = d;
+		b.rightNode = e;
+		c.rightNode = f;
+		
+		System.out.println(checkIncludesWithBreathFirst(a, "a"));
+
+	}
+	
+	private static boolean checkIncludesWithBreathFirst(Node node, String input) {
+		
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(node);
+		
+		while(queue.size() > 0) {
+			Node currNode = queue.remove();
+			if(currNode != null) {
+				if(currNode.value.equals(input)) {
+					return true;
+				}
+				else {
+					queue.add(currNode.leftNode);
+					queue.add(currNode.rightNode);
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean checkIncludesWithDepthFirstRecurrsion(Node node, String target) {
+		if (node == null) return false;
+		if (node.value.equals(target)) return true;
+		checkIncludesWithDepthFirstRecurrsion(node.leftNode, target);
+		checkIncludesWithDepthFirstRecurrsion(node.rightNode, target);
+	}
+
+}

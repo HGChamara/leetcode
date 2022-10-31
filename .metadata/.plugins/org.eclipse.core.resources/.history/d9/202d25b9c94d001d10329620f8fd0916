@@ -1,0 +1,10 @@
+package leetcode.binarytrees;
+
+public class SmallestkNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

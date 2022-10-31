@@ -1,0 +1,44 @@
+package leetcode.slidingwindow;
+
+import java.util.Arrays;
+
+public class SlidingWindowMaximum {
+
+	public static void main(String[] args) {
+		int[] nums = {3,1,-1,-3,2,3,6,7};
+		int k = 3;
+		int[] max = maxSlidingWindow(nums, k);
+		for(int m :max) {
+			System.out.print(m+",");
+		}
+	}
+	public static int[] maxSlidingWindow(int[] nums, int k) {
+        int[] maxNums = new int[nums.length-k+1];
+        int max =0;
+        int[] currMax =new int[2];
+        int[] sorted = new int[nums.length];
+        
+        for(int t=0; t<nums.length; t++) {
+        	sorted[t] = nums[t];
+		}
+        Arrays.sort(sorted);
+       
+        currMax[0] = sorted[sorted.length-1];
+        currMax[1] = sorted[sorted.length-2];
+        
+        maxNums[0]=currMax[0];
+        
+        for(int j=k; j<nums.length; j++) {
+        	if(nums[j]>max) {
+        		max = nums[j];
+        	}
+        	maxNums[j-k+1]=max;
+        }
+        
+        return maxNums;
+        
+        
+        
+        
+    } 
+}

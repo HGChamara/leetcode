@@ -1,0 +1,43 @@
+package leetcode.stack;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public class ReversePolishNotation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] inputs = {"2","1","+","3","*"};
+		int output = evalRPN(inputs);
+		System.out.println(output);
+	}
+	
+	public static int evalRPN(String[] tokens) {
+        
+		int output = 0;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("/", "/");
+		map.put("+", "+");
+		map.put("-", "-");
+		map.put("*", "*");
+		
+		Stack<Integer> stack = new Stack<Integer>();
+		for(String s : tokens) {
+			
+			if(map.containsKey(s)) {
+				
+				String a = stack.pop();
+				String b = stack.pop();
+				
+			} else {
+				stack.push(Integer.valueOf(s));
+			}
+			
+			
+		}
+		return output;
+    }
+
+}

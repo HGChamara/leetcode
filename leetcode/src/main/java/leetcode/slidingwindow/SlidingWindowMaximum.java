@@ -1,0 +1,51 @@
+package leetcode.slidingwindow;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class SlidingWindowMaximum {
+
+	public static void main(String[] args) {
+		int[] nums = {3,1,-1,-3,2,3,6,7};
+		int k = 3;
+		int[] max = maxSlidingWindow(nums, k);
+		for(int m :max) {
+			System.out.print(m+",");
+		}
+	}
+	public static int[] maxSlidingWindow(int[] nums, int k) {
+        int[] maxNums = new int[nums.length-k+1];
+        Deque<Integer> dq = new ArrayDeque<Integer>();
+        int inStart = 0;
+        
+        if (nums.length == 0 || k == 0) {
+            return new int[0];
+        }
+        
+        for(int inEnd=0; inEnd<nums.length; inEnd++) {
+        	
+        	while(!dq.isEmpty() && nums[dq.getLast()]<nums[inEnd]) {
+        		dq.removeLast();
+        	}
+        	dq.addLast(inEnd);
+        	
+        	if(dq.getFirst()<inStart) {
+        		dq.removeFirst();
+        	}
+        	
+        	if(inEnd-inStart+1 >= k) {
+        		maxNums[inStart] = nums[dq.getFirst()];
+        		inStart++;
+        	}
+        	
+        }
+        
+        
+        
+        return maxNums;
+        
+        
+        
+        
+    } 
+}

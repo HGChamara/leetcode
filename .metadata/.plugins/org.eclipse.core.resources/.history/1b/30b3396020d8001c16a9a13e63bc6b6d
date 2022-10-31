@@ -1,0 +1,40 @@
+package leetcode.twopointers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class MinimumWindowSubString {
+
+	public static void main(String[] args) {
+		
+		String s = "ADOBECODEBANC";
+		String t = "ABC";
+		System.out.println(minWindow(s, t));
+
+	}
+	
+public static String minWindow(String s, String t) {
+        String o = "";
+        
+        int need = 0;
+        int have = 0;
+        
+        Map<Character, Integer> ml = new HashMap<Character, Integer>();
+        Map<Character, Integer> ms = new HashMap<Character, Integer>();
+        
+      
+        
+        for(char cmm : t.toCharArray()) {
+        	ms.put(cmm, ml.getOrDefault(cmm, 0)+1);
+        }
+        need = ms.size();
+        
+        System.out.println(ml);
+        System.out.println(ms);
+        return o;
+    }
+
+}

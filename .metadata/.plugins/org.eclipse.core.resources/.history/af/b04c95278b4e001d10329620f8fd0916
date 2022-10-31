@@ -1,0 +1,29 @@
+package leetcode.binarytrees;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class CreateTreeInOrderPreOrder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public TreeNode buildTree(int[] preorder, int[] inorder) {
+		
+		List<Integer> pre = Arrays.stream(preorder).boxed().collect(Collectors.toList());
+		List<Integer> in = Arrays.stream(inorder).boxed().collect(Collectors.toList());
+		
+        TreeNode root = new TreeNode(preorder[0]);
+        int mid  = in.indexOf(preorder[0]);
+        
+        int[] preNew = pre.subList(1, mid+1).stream().mapToInt(i -> i).toArray();
+        
+        root.left = buildTree(preorde, inorder)
+        
+        
+    }
+
+}

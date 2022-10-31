@@ -1,0 +1,14 @@
+package leetcode.binarytrees;
+
+public class CreateTreeInOrderPreOrder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public TreeNode buildTree(int[] preorder, int[] inorder) {
+        
+    }
+
+}
