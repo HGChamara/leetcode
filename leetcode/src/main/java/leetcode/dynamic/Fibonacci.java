@@ -1,6 +1,7 @@
 package leetcode.dynamic;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Fibonacci {
 
@@ -8,7 +9,11 @@ public class Fibonacci {
 		//1,1,2,3,5,8,13,21
 		System.out.println(fibByBottomsUp(8));
 		System.out.println(fibByRecurssion(8));
-		System.out.println(fibByMemoize(8, new HashMap<Integer, Integer>()));
+
+		Map map = new HashMap<Integer, Integer>();
+		map.put(1, 1);
+		map.put(2, 1);
+		System.out.println(fibByMemoize(8, map));
 	}
 	
 	public static int fibByBottomsUp(int position) {
@@ -33,9 +38,8 @@ public class Fibonacci {
 		
 	}
 	
-	public static int fibByMemoize(int position, HashMap<Integer, Integer> map) {
-		map.put(1, 1);
-		map.put(2, 1);
+	public static int fibByMemoize(int position, Map<Integer, Integer> map) {
+
 		if(map.containsKey(position)) {
 			return map.get(position);
 		}
